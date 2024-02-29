@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-            $table->text('description') -> nullable();
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+
+            $table->string('title', 10) -> unique();
+
 
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('tags');
     }
 };
