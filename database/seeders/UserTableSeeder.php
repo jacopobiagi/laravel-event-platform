@@ -5,10 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Tag;
-use App\Models\Event;
+use App\Models\User;
 
-class TagTableSeeder extends Seeder
+class UserTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +16,7 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        Tag:: factory()
+        User:: factory()
         -> count(10)
         -> create();
     }

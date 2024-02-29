@@ -19,8 +19,8 @@ class EventFactory extends Factory
         return [
             "name" => fake() -> words(3, true),
             "description" => fake() -> sentence() ,
-            "start_date" => fake() -> dateTimeBetween('1950', '2012') ,
-            "end_date" => fake() ->  dateTimeBetween('2013', 'now'),
+            "start_date" => fake() -> date() ,
+            "end_date" => fake() ->  date(),
         ];
     }
 }
