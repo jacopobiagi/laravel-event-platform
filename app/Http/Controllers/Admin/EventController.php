@@ -88,6 +88,12 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event :: find($id);
+
+          // Verifica se l'utente autenticato è l'owner dell'evento
+          if (Auth::id() !== $event->user_id) {
+            abort(403, 'Non hai il permesso di modificare questo evento.');
+        }
+
         $tags = Tag :: all();
 
         return view('events.edit', compact('event', 'tags'));
@@ -105,6 +111,11 @@ class EventController extends Controller
         $data = $request -> all();
 
         $event = Event :: find($id);
+
+          // Verifica se l'utente autenticato è l'owner dell'evento
+          if (Auth::id() !== $event->user_id) {
+            abort(403, 'Non hai il permesso di modificare questo evento.');
+        }
 
         $event -> name = $data['name'];
         $event -> description = $data['description'];
@@ -128,6 +139,11 @@ class EventController extends Controller
     public function destroy($id)
     {
         $event = Event:: find($id);
+
+          // Verifica se l'utente autenticato è l'owner dell'evento
+          if (Auth::id() !== $event->user_id) {
+            abort(403, 'Non hai il permesso di eliminare questo evento.');
+        }
 
         $event -> tags() -> detach();
         $event -> delete();
