@@ -63,7 +63,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::find($id);
+
+        return view('events.edit', compact('event'));
     }
 
     /**
@@ -75,7 +77,21 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $event = Event::find($id);
+        $data = $request -> all();
+        $data = $request -> validate([
+            'name' => 'required|string|min:3|max:60',
+            'description' => 'required|min:10|max:255',
+        ]);
+
+        $event -> name = $data['name'];
+        $event -> description = $data['description'];
+        // $event -> type = $data['start_date'];
+        // $event -> price = $data['end_date'];
+
+        $event -> save();
+
+        return redirect() -> route('events.index', $event -> id);
     }
 
     /**
