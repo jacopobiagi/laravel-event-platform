@@ -16,8 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [EventController :: class, 'index']) 
-    ->name('events.index');
+    -> name('events.index');
 
+Route::get('/users/{id}', [EventController :: class, 'show'])
+    -> name('events.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
