@@ -61,7 +61,7 @@ class EventController extends Controller
         $event -> tags() -> attach($data['tags']);
 
 
-        return redirect() -> route('events.index');
+        return redirect() -> route('events.show', $event -> id);
     }
 
     /**
@@ -72,8 +72,10 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event:: find($id);
-        return view('events.show', compact('event'));
+        $tags = Tag::all();
+        $users = User::all();
+        $events = Event:: find($id);
+        return view('events.show', compact('events', 'tags', 'users'));
     }
 
     /**
