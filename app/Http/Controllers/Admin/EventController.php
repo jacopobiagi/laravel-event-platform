@@ -46,11 +46,11 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $data = $request -> all();
-            
+
         $event = new Event();
 
 
-        $event -> user_id = $data['user_id']; 
+        $event -> user_id = $data['user_id'];
         $event -> name = $data['name'];
         $event -> description = $data['description'];
         $event -> start_date = $data['start_date'];
