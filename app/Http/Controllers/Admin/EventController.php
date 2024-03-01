@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -66,7 +66,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event:: find($id);
+        return view('events.show', compact('event'));
     }
 
     /**
@@ -77,7 +78,10 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event :: find($id);
+        $tags = Tag :: all();
+
+        return view('events.edit', compact('event', 'tags'));
     }
 
     /**
@@ -89,7 +93,23 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request -> all();
+
+        $event = Event :: find($id);
+
+        dd($data);
+
+        $event -> name = $data['name'];
+        $event -> description = $data['description'];
+        $event -> start_date = $data['start_date'] . ' ' . $data['start_time'];
+        $event -> end_date = $data['end_date'] . ' ' . $data['end_time'];
+
+
+        $event -> save();
+
+        $event -> tags() -> sync($data['tags']);
+
+        return redirect() -> route('events.show', $event -> id);
     }
 
     /**
