@@ -7,9 +7,6 @@
         @foreach ($events as $event)   
             <li>
                 <a href="{{ route('events.show', $event -> id) }}">{{$event -> name}}</a>
-                @auth
-                    <a href="{{ route('events.edit', $event -> id) }}">EDIT</a>
-                @endauth
             </li>       
         @endforeach
     </ul>
