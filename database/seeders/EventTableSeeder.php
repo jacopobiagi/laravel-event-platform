@@ -35,17 +35,5 @@ class EventTableSeeder extends Seeder
 
         });
 
-
-
-        // Event :: factory()
-        // -> count(10)
-        // -> create()
-        // -> each(function($event){
-
-
-        //     $event -> save();
-
-        // });
-
     }
 }
