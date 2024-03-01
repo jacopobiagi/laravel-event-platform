@@ -29,7 +29,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $events = Event :: all();
+        $tags = Tag :: all();
+        return view('events.create', compact('events', 'tags'));
     }
 
     /**
@@ -40,7 +42,20 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request -> all();
+            
+        $event = new Event();
+
+        $event -> name = $data['name'];
+        $event -> description = $data['description'];
+        $event -> start_date = $data['start_date'];
+        $event -> end_date = $data['end_date'];
+
+        $event -> save();
+
+        $event -> tags() -> attach($data['tags']);
+
+        return redirect() -> route('events.index');
     }
 
     /**
