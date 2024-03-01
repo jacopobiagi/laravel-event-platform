@@ -103,8 +103,6 @@ class EventController extends Controller
 
         $event = Event :: find($id);
 
-        dd($data);
-
         $event -> name = $data['name'];
         $event -> description = $data['description'];
         $event -> start_date = $data['start_date'] . ' ' . $data['start_time'];
@@ -126,6 +124,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $event = Event:: find($id);
+
+        $event -> tags() -> detach();
+        $event -> delete();
+
+        return redirect() -> route('events.index');
     }
 }
