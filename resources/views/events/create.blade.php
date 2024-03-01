@@ -4,10 +4,20 @@
 
     <h1>Crea un nuovo evento</h1>
 
-        <form method="POST">
+        <form action="{{ route('events.store') }}" method="POST">
 
             @csrf
             @method('POST')
+
+            <label for="user_id">user_id</label>
+            <select name="user_id" id="user_id">
+
+                @foreach ($users as $user)
+                    <option value="user_id">{{$user -> name}}</option>
+                @endforeach
+    
+            </select>
+            <br>
 
             <label for="name">Name</label>
             <input type="text" name="name" id="name">

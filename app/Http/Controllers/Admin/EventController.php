@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Event;
 use App\Models\Tag;
+use App\Models\User;
 
 class EventController extends Controller
 {
@@ -31,7 +32,9 @@ class EventController extends Controller
     {
         $events = Event :: all();
         $tags = Tag :: all();
-        return view('events.create', compact('events', 'tags'));
+        $users = User :: all();
+
+        return view('events.create', compact('events', 'tags', 'users'));
     }
 
     /**
@@ -46,6 +49,8 @@ class EventController extends Controller
             
         $event = new Event();
 
+        dd($data);
+
         $event -> name = $data['name'];
         $event -> description = $data['description'];
         $event -> start_date = $data['start_date'];
@@ -54,6 +59,7 @@ class EventController extends Controller
         $event -> save();
 
         $event -> tags() -> attach($data['tags']);
+
 
         return redirect() -> route('events.index');
     }
