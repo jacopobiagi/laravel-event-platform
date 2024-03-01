@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\Admin\EventController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EventController :: class, 'index']) 
+Route::get('/', [EventController :: class, 'index'])
     ->name('events.index');
 
 
@@ -23,9 +23,11 @@ Route::get('/', [EventController :: class, 'index'])
 
 // edit and update
 
+
+
 Route :: get('/events/{id}/edit', [EventController :: class, 'edit'])
     -> name('events.edit');
-Route :: patch('/events/{id}', [EventController :: class, 'update'])
+Route :: put('/events/{id}', [EventController :: class, 'update'])
     -> name('events.update');
 
 Route::get('/dashboard', function () {

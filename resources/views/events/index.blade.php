@@ -6,7 +6,8 @@
     <ul>
         @foreach ($events as $event)
             <li>
-                {{ $event->name }}
+                <a href="#">{{ $event->name }}</a>
+                <div><a href="{{ route('events.edit', $event->id) }}">EDIT</a></div>
             </li>
         @endforeach
     </ul>

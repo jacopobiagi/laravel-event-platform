@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\Admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
@@ -80,6 +80,8 @@ class EventController extends Controller
         $data = $request -> all();
 
         $event = Event :: find($id);
+
+        dd($data);
 
         $event -> name = $data['name'];
         $event -> description = $data['description'];
