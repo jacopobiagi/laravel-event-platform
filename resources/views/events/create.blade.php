@@ -9,11 +9,11 @@
             @csrf
             @method('POST')
 
-            <label for="user_id">user_id</label>
+            <label for="user_id">Utente</label>
             <select name="user_id" id="user_id">
 
                 @foreach ($users as $user)
-                    <option value="user_id">{{$user -> name}}</option>
+                    <option value="{{$user -> id}}">{{$user -> name}}</option>
                 @endforeach
     
             </select>
