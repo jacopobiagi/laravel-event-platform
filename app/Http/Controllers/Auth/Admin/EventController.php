@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Auth\Admin;
+
+use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 use App\Models\Event;
 use App\Models\Tag;
@@ -17,7 +18,8 @@ class EventController extends Controller
      */
     public function index()
     {
-        //
+        $events = Event :: all();
+        return view('events.index', compact('events'));
     }
 
     /**

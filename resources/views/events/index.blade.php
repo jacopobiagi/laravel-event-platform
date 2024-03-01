@@ -2,5 +2,12 @@
 
 @section('content')
     <h1>Events</h1>
-    <h2>Ciao</h2>
+
+    <ul>
+        @foreach ($events as $event)
+            <li>
+                {{ $event->name }}
+            </li>
+        @endforeach
+    </ul>
 @endsection
