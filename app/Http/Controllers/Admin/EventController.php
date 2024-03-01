@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\Tag;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -50,7 +51,7 @@ class EventController extends Controller
         $event = new Event();
 
 
-        $event -> user_id = $data['user_id'];
+        $event -> user_id =  Auth::id();
         $event -> name = $data['name'];
         $event -> description = $data['description'];
         $event -> start_date = $data['start_date'];
