@@ -60,7 +60,10 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event :: find($id);
+        $tags = Tag :: all();
+
+        return view('events.edit', compact('event', 'tags'));
     }
 
     /**
@@ -72,7 +75,21 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request -> all();
+
+        $event = Event :: find($id);
+
+        $event -> name = $data['name'];
+        $event -> description = $data['description'];
+        $event -> start_date = $data['start_date'] . ' ' . $data['start_time'];
+        $event -> end_date = $data['end_date'] . ' ' . $data['end_time'];
+
+
+        $event -> save();
+
+        $event -> tags() -> sync($data['tags']);
+
+        return redirect() -> route('events.show', $event -> id);
     }
 
     /**
