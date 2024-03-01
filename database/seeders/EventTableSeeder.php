@@ -19,25 +19,33 @@ class EventTableSeeder extends Seeder
     {
 
 
-        Event :: factory() 
-        -> count(10) 
-        -> create() 
+        Event :: factory()
+        -> count(50)
+        -> make()
         -> each(function($event){
 
-            $tag = Tag :: inRandomOrder() -> limit(3) -> get();
-            $event -> tags() -> attach($tag);
-            $event -> save();
-
-        });
-        Event :: factory() 
-        -> count(10) 
-        -> make() 
-        -> each(function($event){
 
             $user = User :: inRandomOrder() -> first();
             $event -> user() -> associate($user);
+
             $event -> save();
 
+            $tag = Tag :: inRandomOrder() -> limit(3) -> get();
+            $event -> tags() -> attach($tag);
+
         });
+
+
+
+        // Event :: factory()
+        // -> count(10)
+        // -> create()
+        // -> each(function($event){
+
+
+        //     $event -> save();
+
+        // });
+
     }
 }
