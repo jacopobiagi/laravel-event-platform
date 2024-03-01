@@ -19,19 +19,19 @@
             <br>
             <label for="date">start_date</label>
             <br>
-            <input type="date" name="start_date" id="start_date" value="{{ $event->getDateOnly() }}">
+            <input type="date" name="start_date" id="start_date" value="{{ $event->getStartDate() }}">
             <br>
             <label for="start_time">Start_ime</label>
             <br>
-            <input type="time" name="start_time" id="start_time" value="{{ $event->getTimeOnly() }}">
+            <input type="time" name="start_time" id="start_time" value="{{ $event->getStartTime() }}">
             <br>
             <label for="date">End_date</label>
             <br>
-            <input type="date" name="end_date" id="end_date" value="{{ $event->getDateOnly() }}">
+            <input type="date" name="end_date" id="end_date" value="{{ $event->getEndDate() }}">
             <br>
             <label for="end_time">Start_ime</label>
             <br>
-            <input type="time" name="end_time" id="end_time" value="{{ $event->getTimeOnly() }}">
+            <input type="time" name="end_time" id="end_time" value="{{ $event->getEndTime() }}">
             <br>
 
             <br>
@@ -44,7 +44,7 @@
                             @if ($eventTag->id == $tag->id)
                                 checked
                             @endif @endforeach>
-                    <label for="tag{{ $tag->id }}">{{ $tag->name }}</label>
+                    <label for="tag{{ $tag->id }}">{{ $tag->title }}</label>
                     <br>
                 </div>
             @endforeach

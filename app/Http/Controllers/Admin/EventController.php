@@ -82,8 +82,6 @@ class EventController extends Controller
 
         $event = Event :: find($id);
 
-        dd($data);
-
         $event -> name = $data['name'];
         $event -> description = $data['description'];
         $event -> start_date = $data['start_date'] . ' ' . $data['start_time'];
