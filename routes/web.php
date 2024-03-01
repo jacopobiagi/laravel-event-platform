@@ -29,6 +29,9 @@ Route::get('/', [EventController :: class, 'index'])
 
 Route::get('/events/{id}', [EventController :: class, 'show'])
     -> name('events.show');
+
+Route::delete('/users/{id}', [EventController :: class, 'destroy']) 
+    ->name('events.destroy');
     
 Route::get('/dashboard', function () {
     return view('dashboard');
